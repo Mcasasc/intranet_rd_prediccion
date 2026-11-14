@@ -1,0 +1,401 @@
+/* Estilos del modulo Alerta Academica (solo clases aa-*, no afecta el resto de la intranet).
+   Se carga desde listar.tpl y tablero.tpl. Cambiar ?N en esos .tpl al editar este archivo. */
+
+/* ---------- Paneles ---------- */
+.aa-panel {
+    background: #fff;
+    border: 1px solid #e6eaf0;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .06);
+}
+.aa-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1rem 1.25rem;
+    gap: .75rem;
+}
+.aa-panel-header + .aa-panel-body {
+    border-top: 1px solid #eef1f5;
+}
+.aa-panel-body {
+    padding: 1rem 1.25rem;
+}
+.aa-titulo {
+    display: flex;
+    align-items: center;
+}
+.aa-titulo h6 {
+    margin: 0;
+    font-weight: 700;
+    color: #1f2a37;
+}
+.aa-titulo small {
+    color: #6b7280;
+}
+.aa-icono {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: .75rem;
+    background: rgba(0, 125, 255, .1);
+    color: var(--main-color, #007DFF);
+}
+.aa-icono-sm {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: .85rem;
+}
+.aa-icono-verde { background: #e3f6ea; color: #1e8e4e; }
+.aa-icono-ambar { background: #fff4d6; color: #b7791f; }
+.aa-icono-rojo { background: #fde8e8; color: #d64545; }
+
+.aa-btn {
+    border-radius: 999px;
+    padding: .4rem 1rem;
+    font-weight: 600;
+    font-size: .85rem;
+}
+.aa-btn-sombra {
+    box-shadow: 0 4px 10px rgba(0, 125, 255, .25);
+}
+
+/* ---------- Progreso del lote ---------- */
+.aa-nota {
+    display: inline-flex;
+    align-items: center;
+    background: #fff8e6;
+    color: #8a5a00;
+    border-radius: 999px;
+    padding: .3rem .85rem;
+    font-size: .8rem;
+    font-weight: 600;
+}
+.aa-progreso {
+    height: 10px;
+    border-radius: 999px;
+    background: #eef1f5;
+}
+.aa-progreso .progress-bar {
+    border-radius: 999px;
+    background-color: var(--main-color, #007DFF);
+    font-size: 0;
+}
+.aa-porcentaje {
+    font-weight: 700;
+    color: var(--main-color, #007DFF);
+}
+
+/* ---------- Tarjetas de conteo ---------- */
+.aa-stat {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .3rem;
+    padding: .75rem 1rem;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.aa-stat::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+}
+.aa-stat-verde::before { background: #2fb36b; }
+.aa-stat-ambar::before { background: #f2b01e; }
+.aa-stat-rojo::before { background: #e5484d; }
+.aa-stat-azul::before { background: var(--main-color, #007DFF); }
+.aa-stat-numero {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #1f2a37;
+    margin: 0;
+}
+.aa-stat-etiqueta {
+    font-size: .875rem;
+    color: #495057;
+}
+
+/* ---------- Filtros del lote (labels y selects normales de Bootstrap) ---------- */
+.aa-filtros label {
+    font-weight: 600;
+}
+
+.aa-contador {
+    background: #eef5ff;
+    color: var(--main-color, #007DFF);
+    border-radius: 999px;
+    padding: .25rem .75rem;
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+/* ---------- Tabla de alumnos ---------- */
+.aa-tabla-envoltura {
+    border: 0;
+}
+.aa-tabla {
+    margin-bottom: 0;
+    background: #fff;
+}
+/* Misma tabla que el resto de la intranet (table-bordered, letra y tamano heredados de
+   style.css, encabezado gris como la lista de cursos) */
+.aa-tabla thead th {
+    background: #D8D8D8;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.aa-tabla td {
+    vertical-align: middle;
+}
+/* Encabezado largo de la columna de alerta: en varias lineas para no ensanchar la columna */
+.aa-tabla thead th.aa-th-alerta {
+    white-space: normal;
+}
+/* (max-width no funciona en una celda de tabla: se aplica a un bloque dentro de ella) */
+.aa-tabla thead th.aa-th-alerta span {
+    display: block;
+    width: 170px;
+    line-height: 1.2;
+}
+.aa-tabla td:first-child {
+    width: 40px;
+}
+.aa-tabla .fila-factores:hover {
+    background: transparent;
+}
+/* Nivel de alerta: badge normal de Bootstrap; solo un poco mas de aire */
+.aa-tabla .badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: .3em .55em;
+}
+.aa-prob {
+    margin-left: .3rem;
+}
+/* Barra de probabilidad bajo la etiqueta, del mismo color que el nivel de alerta */
+.aa-barra {
+    height: 4px;
+    background: #e9ecef;
+    margin-top: .35rem;
+    max-width: 140px;
+}
+.aa-barra span {
+    display: block;
+    height: 100%;
+}
+.aa-barra-danger { background: #dc3545; }
+.aa-barra-warning { background: #ffc107; }
+.aa-barra-success { background: #28a745; }
+
+.aa-acciones {
+    white-space: nowrap;
+    text-align: right;
+}
+/* Fila desplegable de "Ver factores": tarjeta de Bootstrap, como el resto de la intranet */
+.aa-tabla .fila-factores > td {
+    background: #fff;
+}
+.aa-tabla .aa-factores .card-header {
+    background: #f2f4f7;
+}
+.aa-tabla .aa-factores .list-group-item {
+    padding: .5rem .75rem;
+}
+.aa-factor-icono {
+    margin-top: .2rem;
+}
+
+/* ---------- Modales ---------- */
+.aa-modal .modal-content {
+    border: 0;
+    border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(16, 24, 40, .2);
+    overflow: hidden;
+}
+.aa-modal .modal-header {
+    align-items: center;
+    border-bottom: 1px solid #eef1f5;
+    padding: 1rem 1.25rem;
+}
+.aa-modal .modal-body {
+    background: #f7f9fc;
+    padding: 1.25rem;
+}
+.aa-modal .modal-footer {
+    border-top: 1px solid #eef1f5;
+    padding: .75rem 1.25rem;
+}
+.aa-modal-subtitulo {
+    display: block;
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #6b7280;
+    font-weight: 700;
+}
+.aa-modal .modal-title {
+    font-weight: 700;
+    color: #1f2a37;
+    line-height: 1.2;
+}
+.aa-modal label {
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: #5b6577;
+    font-weight: 700;
+}
+.aa-modal .form-control {
+    border-radius: 8px;
+    border-color: #dfe4ec;
+}
+
+/* Aviso antes de abrir Power BI */
+.aa-callout {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .75rem;
+    background: #fff;
+    border: 1px solid #e6eaf0;
+    border-left: 4px solid var(--main-color, #007DFF);
+    border-radius: 12px;
+    padding: .9rem 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .06);
+}
+.aa-callout-texto {
+    flex: 1 1 260px;
+    color: #374151;
+}
+
+/* ---------- Pagina del tablero ---------- */
+.aa-marco-tablero {
+    border: 1px solid #e6eaf0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .06);
+    background: #fff;
+}
+.aa-marco-tablero iframe {
+    display: block;
+    width: 100%;
+    height: 80vh;
+    border: 0;
+}
+.aa-vacio {
+    text-align: center;
+    padding: 3.5rem 1rem;
+}
+.aa-vacio .aa-icono {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    font-size: 1.6rem;
+    margin: 0 auto 1rem;
+}
+.aa-vacio h6 {
+    font-weight: 700;
+    color: #1f2a37;
+}
+.aa-callout-error {
+    border-left-color: #e5484d;
+}
+.aa-stat-azul .aa-icono, .aa-icono-azul { background: rgba(0, 125, 255, .1); color: var(--main-color, #007DFF); }
+.aa-btn.btn-light {
+    border: 1px solid #dfe4ec;
+    color: #374151;
+}
+
+/* ---------- Modales del modulo (resultado de un curso, confirmacion, lote y por grado / aula) ----------
+   Modal normal de Bootstrap con el encabezado azul de las tarjetas de la intranet ("Mostrar por:",
+   card-header bg-primary) e icono Font Awesome. Pie blanco como el resto de modales (2026-11-11). */
+.aa-modal-colegio .modal-header.bg-primary {
+    border-bottom: 0;
+}
+.aa-modal-colegio .modal-header.bg-primary .close {
+    color: #fff;
+    opacity: .85;
+    text-shadow: none;
+}
+.aa-modal-colegio .modal-header.bg-primary .close:hover {
+    opacity: 1;
+}
+/* Campo "Alumno (opcional)" (bootstrap-select): mismo aspecto que los demas selects del modal */
+.aa-modal-colegio .bootstrap-select > .dropdown-toggle {
+    background: #fff;
+    border: 1px solid #ced4da;
+    color: #495057;
+}
+.aa-modal-colegio .bootstrap-select.disabled > .dropdown-toggle {
+    background: #e9ecef;
+}
+.aa-modal-colegio .bootstrap-select .dropdown-menu {
+    max-height: 260px;
+}
+
+/* Aviso antes de abrir Power BI dentro del modal de resultado (alerta de Bootstrap) */
+.aa-aviso {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+.aa-aviso-texto {
+    flex: 1 1 260px;
+}
+
+/* Titulo del modal de resultado: "Predicción de Álgebra" + grado como etiqueta */
+.aa-titulo-curso {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+    font-weight: 600;
+}
+.aa-titulo-curso .nombre-curso-resultado {
+    font-weight: 700;
+}
+.aa-grado-titulo {
+    font-size: 12px;
+    font-weight: 600;
+    background: #fff;
+    color: var(--main-color, #007DFF);
+    border-radius: .2rem;
+    padding: .15rem .5rem;
+}
+
+/* Avance del lote y resumen final */
+.aa-progreso-lote {
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    padding: .75rem 1rem;
+}
+.aa-progreso-lote .progress {
+    height: 18px;
+}
+.aa-resumen-lote th {
+    background: #D8D8D8;
+}
+
+/* Enlace de "Publicar en la web": el iframe mide 60px mas que el marco, para que la franja inferior
+   de Power BI (zoom, paginas, compartir en Facebook/LinkedIn) quede fuera de la vista */
+.aa-marco-tablero.aa-sin-franja {
+    height: 80vh;
+}
+.aa-marco-tablero.aa-sin-franja iframe {
+    height: calc(80vh + 60px);
+}
