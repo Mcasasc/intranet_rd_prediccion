@@ -62,10 +62,8 @@ RUTA_MODELO = os.path.join(BASE_DIR, "modelos", "modelo_entrenado.joblib")
 RUTA_COLUMNAS = os.path.join(BASE_DIR, "modelos", "columnas_features.joblib")
 RUTA_DATASET_REFERENCIA = os.path.join(BASE_DIR, "outputs", "dataset_maestro.csv")
 
-_SCRIPTS_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if _SCRIPTS_DIR not in sys.path:
-    sys.path.insert(0, _SCRIPTS_DIR)
-from comun.calidad_academica import (  # noqa: E402
+
+from calidad_academica import (  # noqa: E402
     calcular_edad_relativa_meses,
     corregir_fecha_nacimiento,
     limpiar_escala,
